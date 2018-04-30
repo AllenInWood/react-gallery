@@ -1,2 +1,2 @@
-# react-gallery
-photo gallery demo based on react
+# react-demo
+some web demo based on react
