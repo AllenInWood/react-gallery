@@ -1,55 +1,108 @@
 'use strict';
 
-// arguments object - no longer bound witn arrow function
-var add = function add(a, b) {
-	// console.log(arguments);
-	return a + b;
+console.log('App.js is running');
+
+// if statement
+// ternary operators
+// logical and operator
+
+var article = {
+	title: 'Indecision App',
+	subtitle: 'Put you life in the hands of computer'
 };
-console.log(add(55, 1, 1001));
+// JSX - Javascript XML
+// JSX element: only allow a single root tag (a wrapper div)
+var template = React.createElement(
+	'div',
+	null,
+	React.createElement(
+		'h1',
+		null,
+		article.title
+	),
+	React.createElement(
+		'p',
+		null,
+		article.subtitle
+	),
+	React.createElement(
+		'ol',
+		null,
+		React.createElement(
+			'li',
+			null,
+			'Item one'
+		),
+		React.createElement(
+			'li',
+			null,
+			'Item two'
+		),
+		React.createElement(
+			'li',
+			null,
+			'Item three'
+		)
+	)
+);
 
-// this keyword - no longer bound with arrow function
-var user = {
-	name: 'Allen',
-	cities: ['Irvine', 'Beijing', 'Kunming'],
-	// printPlacesLived: function() {
-	// 	// console.log(this.name);
-	// 	// console.log(this.cities);
-	// 	const that = this;
-
-	// 	this.cities.forEach(function(city) {
-	// 		console.log(that.name + ' has lived in ' + city);
-	// 	});
-	// }
-	printPlacesLived: function printPlacesLived() {
-		var _this = this;
-
-		return this.cities.map(function (city) {
-			return _this.name + ' has lived in ' + city;
-		});
-		// this.cities.forEach((city) => {
-		// 	// arrow function: bound 'this' to parent scope, not to its own scope
-		// 	console.log(this.name + ' has lived in ' + city);
-		// });
-	}
+var count = 0;
+var addOne = function addOne() {
+	console.log('addOne');
 };
-// user.printPlacesLived();
-console.log(user.printPlacesLived());
-
-// challenge area
-
-var multiplier = {
-	// numbers - array of numbers
-	// multiplyBy - single number
-	// multiply - return a new array where the number have been multiplied
-	numbers: [10, 20, 30],
-	multiplyBy: 3,
-	multiply: function multiply() {
-		var _this2 = this;
-
-		return this.numbers.map(function (number) {
-			return number * _this2.multiplyBy;
-		});
-	}
+var minusOne = function minusOne() {
+	console.log('minusOne');
 };
-// [1, 2, 3] 2 [2, 4, 6]
-console.log(multiplier.multiply());
+var reset = function reset() {
+	console.log('reset');
+};
+var templateTwo = React.createElement(
+	'div',
+	null,
+	React.createElement(
+		'h1',
+		null,
+		'Count: ',
+		count
+	),
+	React.createElement(
+		'button',
+		{ onClick: addOne },
+		'+1'
+	),
+	React.createElement(
+		'button',
+		{ onClick: minusOne },
+		'-1'
+	),
+	React.createElement(
+		'button',
+		{ onClick: reset },
+		'reset'
+	)
+);
+
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(templateTwo, appRoot);
+
+// user profile
+// const user = {
+// 	name: 'Allen',
+// 	age: 23,
+// 	location: 'Irvine'
+// };
+// function getLocation(location) {
+// 	if (location) {
+// 		return <p>Location: {location}</p>
+// 	}
+// }
+// // Create templateTwo var JSX expression
+// // Undefined null and booleans are ignored by JSX
+// const templateTwo = (
+// 	<div>
+// 		<h1>{user.name ? user.name.toUpperCase() : 'Anonymous'}</h1>
+// 		{(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+// 		{getLocation(user.location)}
+// 	</div>
+// );
